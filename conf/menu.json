@@ -64,5 +64,17 @@
 				"action": "UserController.List"
 			}
 		]
+	},
+	{
+		"name": "其他",
+		"icon": "fa-cloud-upload",
+		"route": "#",
+		"submenu": [
+			{
+				"name": "帮助",
+				"route": "main.note",
+				"action": "MainController.Note"
+			}
+		]
 	}
 ]

@@ -59,13 +59,17 @@ func (this *TaskController) Create() {
 	if this.isPost() {
 		projectId, _ := this.GetInt("project_id")
 		envId, _ := this.GetInt("envId")
-		verType, _ := this.GetInt("ver_type")
+		//verType, _ := this.GetInt("ver_type")
 		startVer := this.GetString("start_ver")
 		endVer := this.GetString("end_ver")
 		message := this.GetString("editor_content")
 		if envId < 1 {
 			this.showMsg("请选择发布环境", MSG_ERR)
 		}
+		if endVer == "" {
+			this.showMsg("请填写版本号", MSG_ERR)
+		}
+		/*
 		if verType == 2 {
 			startVer = ""
 		} else {
@@ -78,6 +82,7 @@ func (this *TaskController) Create() {
 				}
 			}
 		}
+		*/
 
 		project, err := service.ProjectService.GetProject(projectId)
 		this.checkError(err)
@@ -118,6 +123,7 @@ func (this *TaskController) Create() {
 }
 
 // 标签列表
+/*
 func (this *TaskController) GetTags() {
 	projectId, _ := this.GetInt("project_id")
 
@@ -128,6 +134,7 @@ func (this *TaskController) GetTags() {
 	out["list"] = list
 	this.jsonResult(out)
 }
+*/
 
 // 任务详情
 func (this *TaskController) Detail() {

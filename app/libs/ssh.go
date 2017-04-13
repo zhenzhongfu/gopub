@@ -9,6 +9,10 @@ import (
 	"io/ioutil"
 	"os"
 	"path"
+
+	//"strings"
+	//"encoding/base64"
+	"net"
 )
 
 type ServerConn struct {
@@ -43,9 +47,13 @@ func (s *ServerConn) getSshConnect() (*ssh.Client, error) {
 	}
 	config.Auth = append(config.Auth, ssh.PublicKeys(keys...))
 
+	//---------------------------
+	config.HostKeyCallback = func(string, net.Addr, ssh.PublicKey) error { return nil }
+	//---------------------------
+
 	conn, err := ssh.Dial("tcp", s.addr, &config)
 	if err != nil {
-		return nil, fmt.Errorf("无法连接到服务器 [%s]: %v", s.addr, err)
+	    return nil, fmt.Errorf("无法连接到服务器 [%s]: %v", s.addr, err)
 	}
 	s.conn = conn
 	return s.conn, nil

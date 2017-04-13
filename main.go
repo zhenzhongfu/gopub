@@ -5,6 +5,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/beego/i18n"
 	"github.com/lisijie/gopub/app/controllers"
+	"github.com/lisijie/gopub/app/libs"
 	_ "github.com/lisijie/gopub/app/mail"
 	"github.com/lisijie/gopub/app/service"
 	"time"
@@ -28,6 +29,7 @@ func main() {
 	beego.Router("/login", &controllers.MainController{}, "*:Login")
 	beego.Router("/logout", &controllers.MainController{}, "*:Logout")
 	beego.Router("/profile", &controllers.MainController{}, "*:Profile")
+	beego.Router("/note", &controllers.MainController{}, "*:Note")
 
 	beego.AutoRouter(&controllers.ProjectController{})
 	beego.AutoRouter(&controllers.TaskController{})
@@ -46,5 +48,10 @@ func main() {
 	beego.AddFuncMap("i18n", i18n.Tr)
 
 	beego.SetStaticPath("/assets", "assets")
+	_, stderr, err := libs.ExecCmdDir("", "/bin/bash", "-c", " cp README.md assets")
+	if err != nil {
+		fmt.Errorf("%v: %s", err, stderr)
+		return
+	}
 	beego.Run()
 }

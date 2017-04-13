@@ -7,6 +7,10 @@ import (
 	"os"
 	"runtime"
 	"time"
+
+	"github.com/microcosm-cc/bluemonday"
+	"github.com/russross/blackfriday"
+	"io/ioutil"
 )
 
 type MainController struct {
@@ -230,4 +234,27 @@ func (this *MainController) Logout() {
 	this.auth.Logout()
 	this.Ctx.SetCookie("auth", "")
 	this.redirect(beego.URLFor(".Login"))
+}
+
+// 说明
+func (this *MainController) Note() {
+	beego.ReadFromRequest(&this.Controller)
+
+	// 直接显示readme内容
+	f, err := os.Open("assets/README.md")
+	if err != nil {
+	    beego.Debug(err)
+	    return
+	}
+	defer f.Close()
+	input, err := ioutil.ReadAll(f)
+	if err != nil {
+	    beego.Debug(err)
+	    return
+	}
+
+	unsafe := blackfriday.MarkdownCommon(input)
+	html := bluemonday.UGCPolicy().SanitizeBytes(unsafe)
+	this.Data["html"] = string(html)
+	this.display("main/note")
 }

@@ -112,6 +112,7 @@ func (this *deployService) Build(task *entity.Task) error {
 	repo, _ := RepositoryService.GetRepoByProjectId(task.ProjectId)
 
 	// 获取版本更新信息
+	/*
 	if task.StartVer != "" {
 		logs, err := repo.GetChangeLogs(task.StartVer, task.EndVer)
 		if err != nil {
@@ -125,6 +126,7 @@ func (this *deployService) Build(task *entity.Task) error {
 		task.ChangeFiles = strings.Join(files, "\n")
 		TaskService.UpdateTask(task, "ChangeLogs", "ChangeFiles")
 	}
+	*/
 
 	// 导出版本号
 	outVer := ""
