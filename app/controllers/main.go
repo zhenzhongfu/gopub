@@ -3,7 +3,7 @@ package controllers
 import (
 	"fmt"
 	"github.com/astaxie/beego"
-	"github.com/lisijie/gopub/app/service"
+	"github.com/zhenzhongfu/gopub/app/service"
 	"os"
 	"runtime"
 	"time"
@@ -56,6 +56,7 @@ func (this *MainController) Index() {
 	this.Data["dataDir"] = beego.AppConfig.String("data_dir")
 	up, day, hour, min, sec := this.getUptime()
 	this.Data["uptime"] = fmt.Sprintf("%s，已运行 %d天 %d小时 %d分钟 %d秒", beego.Date(up, "Y-m-d H:i:s"), day, hour, min, sec)
+beego.Trace("Fzz ---------------000 ")
 	this.display()
 }
 

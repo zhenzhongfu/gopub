@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"github.com/astaxie/beego"
 	"github.com/beego/i18n"
-	"github.com/lisijie/gopub/app/service"
+	"github.com/zhenzhongfu/gopub/app/service"
 	"io/ioutil"
 	"strings"
 )
@@ -32,7 +32,7 @@ func (this *BaseController) GetString(name string, def ...string) string {
 
 func (this *BaseController) Prepare() {
 	this.Ctx.Output.Header("X-Powered-By", "GoPub/"+beego.AppConfig.String("version"))
-	this.Ctx.Output.Header("X-Author-By", "lisijie")
+	this.Ctx.Output.Header("X-Author-By", "zhenzhongfu")
 	controllerName, actionName := this.GetControllerAndAction()
 	this.controllerName = strings.ToLower(controllerName[0 : len(controllerName)-10])
 	this.actionName = strings.ToLower(actionName)

@@ -67,7 +67,7 @@
 	},
 	{
 		"name": "其他",
-		"icon": "fa-cloud-upload",
+		"icon": "fa-info-circle",
 		"route": "#",
 		"submenu": [
 			{

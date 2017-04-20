@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/beego/i18n"
-	"github.com/lisijie/gopub/app/controllers"
-	"github.com/lisijie/gopub/app/libs"
-	_ "github.com/lisijie/gopub/app/mail"
-	"github.com/lisijie/gopub/app/service"
+	"github.com/zhenzhongfu/gopub/app/controllers"
+	"github.com/zhenzhongfu/gopub/app/libs"
+	_ "github.com/zhenzhongfu/gopub/app/mail"
+	"github.com/zhenzhongfu/gopub/app/service"
 	"time"
 )
 
@@ -19,6 +19,7 @@ func main() {
 	beego.AppConfig.Set("version", VERSION)
 	if beego.AppConfig.String("runmode") == "dev" {
 		beego.SetLevel(beego.LevelDebug)
+		beego.SetLogger("file", `{"filename":"`+beego.AppConfig.String("log_file")+`"}`)
 	} else {
 		beego.SetLevel(beego.LevelInformational)
 		beego.SetLogger("file", `{"filename":"`+beego.AppConfig.String("log_file")+`"}`)

@@ -1,4 +1,4 @@
-// Copyright 2015 lisijie. All Rights Reserved.
+// Copyright 2015 zhenzhongfu. All Rights Reserved.
 
 package controllers
 
@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/validation"
-	"github.com/lisijie/gopub/app/libs"
-	"github.com/lisijie/gopub/app/service"
+	"github.com/zhenzhongfu/gopub/app/libs"
+	"github.com/zhenzhongfu/gopub/app/service"
 	"regexp"
 	"strconv"
 )

@@ -2,7 +2,7 @@ package service
 
 import (
 	"errors"
-	"github.com/lisijie/gopub/app/entity"
+	"github.com/zhenzhongfu/gopub/app/entity"
 )
 
 type roleService struct{}

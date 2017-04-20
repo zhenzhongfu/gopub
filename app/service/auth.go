@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
-	"github.com/lisijie/gopub/app/entity"
-	"github.com/lisijie/gopub/app/libs"
+	"github.com/zhenzhongfu/gopub/app/entity"
+	"github.com/zhenzhongfu/gopub/app/libs"
 	"strconv"
 	"strings"
 	"time"
@@ -31,6 +31,7 @@ func (this *AuthService) initOpenPerm() {
 		"main.login":        true,
 		"main.logout":       true,
 		"main.getpubstat":   true,
+		"main.note":	     true,
 		"project.clone":     true,
 		"project.getstatus": true,
 		"task.gettags":      true,

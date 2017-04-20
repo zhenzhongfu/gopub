@@ -2,7 +2,7 @@ package service
 
 import (
 	"errors"
-	"github.com/lisijie/gopub/app/libs"
+	"github.com/zhenzhongfu/gopub/app/libs"
 	"path/filepath"
 	_ "github.com/astaxie/beego"
 	_ "strconv"
